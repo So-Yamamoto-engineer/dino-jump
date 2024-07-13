@@ -78,3 +78,21 @@ h2{
     font-size: 3rem; 
     display: none; 
 }
+
+
+#board {
+    width: 750px;
+    height: 550px;
+    background: url('./img/sky.png') repeat-x;
+    background-size: cover;
+    animation: background-scroll 10s linear infinite;
+}
+
+@keyframes background-scroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
