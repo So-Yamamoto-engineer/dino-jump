@@ -33,9 +33,9 @@ let cactusY = boardHeight - cactusHeight;
 let cactus1Img = new Image(); 
 let cactus2Img = new Image(); 
 let cactus3Img = new Image(); 
-cactus1Img.src = "./img/cactus1.png"; 
-cactus2Img.src = "./img/cactus2.png"; 
-cactus3Img.src = "./img/cactus3.png"; 
+cactus1Img.src = "/img/cactus1.png"; 
+cactus2Img.src = "/img/cactus2.png"; 
+cactus3Img.src = "/img/cactus3.png"; 
 
 //physics 
 let velocityX = -6; //cactus moving left speed 
@@ -53,7 +53,7 @@ window.onload = function() {
     context = board.getContext("2d");
  
     dinoImg = new Image(); 
-    dinoImg.src = "./img/rufy.png"; 
+    dinoImg.src = "/img/rufy.png"; 
     dinoImg.onload = function() { 
         context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height); 
     } 
