@@ -111,11 +111,9 @@ function reset(gameOver){
             } 
         }); 
         document.addEventListener("touchstart", function(e){ 
-            if(e.code=="Space"){ 
-                gameOver=false; 
-                hideGameContainer();
-                this.location.reload(); 
-            } 
+            gameOver=false; 
+            hideGameContainer();
+            this.location.reload(); 
         }); 
     } 
 } 
@@ -159,7 +157,7 @@ function moveDino(e) {
         return; 
     } 
  
-    if ((e.code == "Space" || e.code == "ArrowUp")) { 
+    if ((e.code == "Space" || e.code == "ArrowUp" || e.type == "touchstart")) { 
         if(dino.y>50){     
         //jump 
         velocityY = -10; 
