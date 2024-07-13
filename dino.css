@@ -8,6 +8,9 @@ body {
     border-bottom: 1px solid black;
 }
 
+h2{
+    margin-bottom: 70px;
+}
 
 .character-selection {
     display: flex;
@@ -20,19 +23,19 @@ body {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .Row2{
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .Row3{
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .character-grid {
