@@ -63,8 +63,12 @@ window.onload = function() {
         character.addEventListener("click", function() {
             selectCharacter(character.getAttribute("data-src"));
         });
+        character.addEventListener("touchstart", function() {
+            selectCharacter(character.getAttribute("data-src"));
+        });
     });
     document.addEventListener("keydown", moveDino); 
+    document.addEventListener("touchstart", moveDino); 
 
     showCharacterSelection();
 } 
@@ -100,6 +104,13 @@ const hideGameContainer = () => {
 function reset(gameOver){ 
     if(gameOver){ 
         document.addEventListener("keydown", function(e){ 
+            if(e.code=="Space"){ 
+                gameOver=false; 
+                hideGameContainer();
+                this.location.reload(); 
+            } 
+        }); 
+        document.addEventListener("touchstart", function(e){ 
             if(e.code=="Space"){ 
                 gameOver=false; 
                 hideGameContainer();
