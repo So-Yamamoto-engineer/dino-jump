@@ -20,6 +20,18 @@
   ],
   "routes": [
     {
+      "src": "/img/(.*)",
+      "dest": "/img/$1"
+    },
+    {
+      "src": "/dino.css",
+      "dest": "/dino.css"
+    },
+    {
+      "src": "/dino.js",
+      "dest": "/dino.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
