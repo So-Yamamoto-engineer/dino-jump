@@ -1,4 +1,4 @@
- 
+
 //board 
 let board; 
 let boardWidth = 750; 
@@ -30,14 +30,17 @@ let cactusHeight = 70;
 let cactusX = 700; 
 let cactusY = boardHeight - cactusHeight; 
  
-let cactus1Img; 
-let cactus2Img; 
-let cactus3Img; 
- 
+let cactus1Img = new Image(); 
+let cactus2Img = new Image(); 
+let cactus3Img = new Image(); 
+cactus1Img.src = "./img/cactus1.png"; 
+cactus2Img.src = "./img/cactus2.png"; 
+cactus3Img.src = "./img/cactus3.png"; 
+
 //physics 
-let velocityX = -4; //cactus moving left speed 
+let velocityX = -6; //cactus moving left speed 
 let velocityY = 0; 
-let gravity = .4; 
+let gravity = .6; 
  
 let gameOver = false; 
 let score = 0; 
@@ -47,37 +50,59 @@ window.onload = function() {
     board.height = boardHeight; 
     board.width = boardWidth; 
  
-    context = board.getContext("2d"); //used for drawing on the board 
- 
-    //draw initial dinosaur 
-    // context.fillStyle="green"; 
-    // context.fillRect(dino.x, dino.y, dino.width, dino.height); 
+    context = board.getContext("2d");
  
     dinoImg = new Image(); 
     dinoImg.src = "./img/rufy.png"; 
     dinoImg.onload = function() { 
         context.drawImage(dinoImg, dino.x, dino.y, dino.width, dino.height); 
     } 
- 
-    cactus1Img = new Image(); 
-    cactus1Img.src = "./img/cactus1.png"; 
- 
-    cactus2Img = new Image(); 
-    cactus2Img.src = "./img/cactus2.png"; 
- 
-    cactus3Img = new Image(); 
-    cactus3Img.src = "./img/cactus3.png"; 
- 
-    requestAnimationFrame(update); 
-    setInterval(placeCactus, 500); //1000 milliseconds = 1 second 
+    //イベントリスナーの追加
+    const characters = document.querySelectorAll(".character");
+    characters.forEach(character => {
+        character.addEventListener("click", function() {
+            selectCharacter(character.getAttribute("data-src"));
+        });
+    });
     document.addEventListener("keydown", moveDino); 
+
+    showCharacterSelection();
 } 
- 
+
+
+const showCharacterSelection = () => {
+    hideGameContainer();
+}
+
+function selectCharacter(characterSrc) {
+    dinoImg.src = characterSrc;
+    hideCharacterSelection();
+    dinoImg.onload = function() {
+        setInterval(placeCactus, 1000);
+        requestAnimationFrame(update);
+    }
+} 
+
+const hideCharacterSelection = () => {
+    document.querySelector("h2").classList.add("hidden");
+    document.getElementById("character-selection").classList.add("hidden");
+    document.querySelector("h1").classList.remove("hidden");
+    document.getElementById("board").classList.remove("hidden");
+}
+
+const hideGameContainer = () => {
+    document.querySelector("h2").classList.remove("hidden");
+    document.getElementById("character-selection").classList.remove("hidden");
+    document.querySelector("h1").classList.add("hidden");
+    document.getElementById("board").classList.add("hidden");
+}
+
 function reset(gameOver){ 
     if(gameOver){ 
         document.addEventListener("keydown", function(e){ 
             if(e.code=="Space"){ 
                 gameOver=false; 
+                hideGameContainer();
                 this.location.reload(); 
             } 
         }); 
@@ -105,11 +130,11 @@ function update() {
         if (detectCollision(dino, cactus)) { 
             gameOver = true; 
             reset(gameOver); 
-        }if (detectCollision(dino, cactus)) { 
-            gameOver = true; 
-            reset(gameOver); 
-        } 
+        }
     } 
+    if(gameOver){ 
+        document.getElementById("game-over").style.display="block" 
+    }
  
     //score 
     context.fillStyle="black"; 

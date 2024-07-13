@@ -7,3 +7,70 @@ body {
     background-color: lightgray;
     border-bottom: 1px solid black;
 }
+
+
+.character-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.Row1{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.Row2{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.Row3{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.character-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 300px;
+}
+
+.character {
+    width: 88px;
+    height: 94px;
+    cursor: pointer;
+}
+
+.game-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+#game-over { 
+    z-index: 900; 
+    position: relative; 
+    top: -400px; 
+    font-size: 3rem; 
+    display: none; 
+}
