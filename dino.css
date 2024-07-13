@@ -83,7 +83,7 @@ h2{
 #board {
     width: 750px;
     height: 550px;
-    background: url('./img/sky.png') repeat-x;
+    background: url('/img/sky.png') repeat-x;
     background-size: cover;
     animation: background-scroll 10s linear infinite;
 }
